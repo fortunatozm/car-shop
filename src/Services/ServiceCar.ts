@@ -44,6 +44,19 @@ export default class ServiceCar {
   public async getOne(id: string) {
     const modelCar = new ModelCar();
     const car = await modelCar.getOne(id);
+    if (car) {      
+      const carOrg = {
+        id: car._id,
+        model: car.model,
+        year: car.year,
+        color: car.color,
+        status: car.status,
+        buyValue: car.buyValue,
+        doorsQty: car.doorsQty,
+        seatsQty: car.seatsQty,
+      };
+      return carOrg;
+    }
     return car;
   }
 }

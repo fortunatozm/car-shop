@@ -14,7 +14,7 @@ export default class ModelCar {
       doorsQty: { type: Number },
       seatsQty: { type: Number },
     });
-    this._model = models.DominioCar || model('Cars', this._schema);
+    this._model = models.Cars || model('Cars', this._schema);
   }
 
   public async create(car: Icar): Promise<Icar> {
