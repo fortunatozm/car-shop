@@ -66,7 +66,6 @@ export default class ControllerCar {
   }
 
   public async updateOne() {
-    console.log('Aqui');
     const { id } = this._req.params;
     this.validateId();
 

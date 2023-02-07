@@ -1,5 +1,4 @@
 import IMotorcycle from '../Interfaces/IMotorcycle';
-import IVehicle from '../Interfaces/IVehicle';
 import Vehicle from './Vehicle';
 
 export default class Motorcycle extends Vehicle {

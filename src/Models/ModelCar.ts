@@ -29,13 +29,11 @@ export default class ModelCar {
   }
   
   public async update(id: string, car: Icar) {
-    console.log('quebrou');
     const data = await this._model.findOneAndUpdate(
       { _id: id },
       { ...car } as UpdateQuery<Icar>,
       { new: true },
     );
-    console.log(data);
     return data;
   }
 }
