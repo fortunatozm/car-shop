@@ -1,10 +1,10 @@
 import { Model, Schema, model, models, UpdateQuery } from 'mongoose';
-// import IVehicle from '../Interfaces/IVehicle';
 
 export default abstract class AbstractODM<T> {
   protected _schema: Schema;
   protected _model: Model<T>;
   protected _modelName: string;
+  
   constructor(schema: Schema, modelName: string) {
     this._modelName = modelName;
     this._schema = schema;
@@ -14,7 +14,8 @@ export default abstract class AbstractODM<T> {
   public async create(car: T): Promise<T> {
     return this._model.create({ ...car });
   }
-  public async getAll() {
+
+  public async getAll(): Promise<T[]> {
     return this._model.find();
   }
   

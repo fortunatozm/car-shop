@@ -29,7 +29,7 @@ export default class ServiceCar {
     const modelCar = new ModelCar();
     const cars = await modelCar.getAll();
     const carsOrg = cars.map((car) => ({
-      id: car._id,
+      id: car.id,
       model: car.model,
       year: car.year,
       color: car.color,

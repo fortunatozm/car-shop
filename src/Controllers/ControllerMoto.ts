@@ -17,7 +17,7 @@ export default class ControllerMoto {
   }
 
   public async create() {
-    const car: IMotorcycle = {
+    const motor: IMotorcycle = {
       model: this._req.body.model,
       year: this._req.body.year,
       color: this._req.body.color,
@@ -28,7 +28,7 @@ export default class ControllerMoto {
     };
 
     try {
-      const newMoto = await this.service.inserMoto(car);
+      const newMoto = await this.service.inserMoto(motor);
       return this._res.status(201).json(newMoto);
     } catch (error) {
       this._next(error);
@@ -38,6 +38,7 @@ export default class ControllerMoto {
   public async getAll() {
     try {
       const motors = await this.service.getAll();
+      console.log('motors', motors);
       return this._res.status(200).json(motors);
     } catch (error) {
       this._next(error);
