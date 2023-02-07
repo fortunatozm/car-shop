@@ -1,4 +1,4 @@
-import { Model, Schema, model, models } from 'mongoose';
+import { Model, Schema, model, models, UpdateQuery } from 'mongoose';
 import Icar from '../Interfaces/ICar';
 
 export default class ModelCar {
@@ -26,5 +26,16 @@ export default class ModelCar {
   
   public async getOne(id: string) {
     return this._model.findById(id);
+  }
+  
+  public async update(id: string, car: Icar) {
+    console.log('quebrou');
+    const data = await this._model.findOneAndUpdate(
+      { _id: id },
+      { ...car } as UpdateQuery<Icar>,
+      { new: true },
+    );
+    console.log(data);
+    return data;
   }
 }

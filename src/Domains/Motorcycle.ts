@@ -1,18 +1,18 @@
-import Icar from '../Interfaces/ICar';
-// import IVehicle from '../Interfaces/IVehicle';
+import IMotorcycle from '../Interfaces/IMotorcycle';
+import IVehicle from '../Interfaces/IVehicle';
 import Vehicle from './Vehicle';
 
-export default class Car extends Vehicle {
+export default class Motorcycle extends Vehicle {
   // protected id?: string;
   // protected model: string;
   // protected year: number;
   // protected color: string;
   // protected status?: boolean;
   // protected buyValue: number;
-  private doorsQty: number;
-  private seatsQty: number;
+  private category: string;
+  private engineCapacity: number;
 
-  constructor(dados: Icar) {
+  constructor(dados: IMotorcycle) {
     super(dados);
     // this.id = dados.id;
     // this.model = dados.model;
@@ -20,7 +20,7 @@ export default class Car extends Vehicle {
     // this.color = dados.color;
     // this.status = dados.status;
     // this.buyValue = dados.buyValue;
-    this.doorsQty = dados.doorsQty;
-    this.seatsQty = dados.seatsQty;
+    this.category = dados.category;
+    this.engineCapacity = dados.engineCapacity;
   }
 }

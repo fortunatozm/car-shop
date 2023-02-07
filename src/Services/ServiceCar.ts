@@ -59,4 +59,10 @@ export default class ServiceCar {
     }
     return car;
   }
+
+  public async updateOne(id: string, car: Icar) {
+    const modelCar = new ModelCar();
+    const updateCar = await modelCar.update(id, car);
+    return this.createCarDominio(updateCar);
+  }
 }
