@@ -93,7 +93,7 @@ describe('Testes da camada service [Motorcycle]', function () {
   //   expect(result).to.be.deep.equal(motoOutPut);
   // });
 
-  afterEach(function () {
-    sinon.restore();
-  });
+  // afterEach(function () {
+  //   sinon.restore();
+  // });
 });
