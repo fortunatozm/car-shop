@@ -69,25 +69,36 @@ describe('Testes da camada service [car]', function () {
     expect(result).to.be.deep.equal(outputs);
   });
 
-  // it('Listar um carro específico com sucesso', async function () {
-  //   const outputOne: ICar = {
-  //     id: '6348513f34c397abcad040b2',
-  //     model: 'Marea',
-  //     year: 2002,
-  //     color: 'Black',
-  //     status: true,
-  //     buyValue: 15.990,
-  //     doorsQty: 4,
-  //     seatsQty: 5,
-  //   };
+  it('Listar um carro específico com sucesso', async function () {
+    const outputOne: ICar = {
+      id: '6348513f34c397abcad040b2',
+      model: 'Marea',
+      year: 2002,
+      color: 'Black',
+      status: true,
+      buyValue: 15.990,
+      doorsQty: 4,
+      seatsQty: 5,
+    };
 
-  //   sinon.stub(Model, 'findById').resolves(outputOne);
+    const inputOne = {
+      _id: '6348513f34c397abcad040b2',
+      model: 'Marea',
+      year: 2002,
+      color: 'Black',
+      status: true,
+      buyValue: 15.990,
+      doorsQty: 4,
+      seatsQty: 5,
+    };
+
+    sinon.stub(Model, 'findById').resolves(inputOne);
   
-  //   const service = new ServiceCar();
-  //   const resultById = await service.getOne('6348513f34c397abcad040b2');
+    const service = new ServiceCar();
+    const resultById = await service.getOne('6348513f34c397abcad040b2');
   
-  //   expect(resultById).to.be.deep.equal(outputOne);
-  // });
+    expect(resultById).to.be.deep.equal(outputOne);
+  });
 
   it('Retornar [Motorcycle not found] caso a moto não exista', async function () {
     sinon.stub(Model, 'findById').resolves(undefined);

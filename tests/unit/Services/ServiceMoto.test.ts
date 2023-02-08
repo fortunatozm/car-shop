@@ -73,25 +73,36 @@ describe('Testes da camada service [Motorcycle]', function () {
     expect(result).to.be.deep.equal(motoOutPut);
   });
 
-  // it('Listar uma moto específica com sucesso', async function () {
-  //   const motoOutPut: IMoto = {
-  //     id: '6348513f34c397abcad040b2',
-  //     model: 'Honda Cb 600f Hornet',
-  //     year: 2005,
-  //     color: 'Yellow',
-  //     status: true,
-  //     buyValue: 30.000,
-  //     category: 'Street',
-  //     engineCapacity: 600,
-  //   };
+  it('Listar uma moto específica com sucesso', async function () {
+    const motoOutPut: IMoto = {
+      id: '6348513f34c397abcad040b2',
+      model: 'Honda Cb 600f Hornet',
+      year: 2005,
+      color: 'Yellow',
+      status: true,
+      buyValue: 30.000,
+      category: 'Street',
+      engineCapacity: 600,
+    };
+    
+    const motoInput = {
+      _id: '6348513f34c397abcad040b2',
+      model: 'Honda Cb 600f Hornet',
+      year: 2005,
+      color: 'Yellow',
+      status: true,
+      buyValue: 30.000,
+      category: 'Street',
+      engineCapacity: 600,
+    };
 
-  //   sinon.stub(Model, 'findById').resolves(motoOutPut);
+    sinon.stub(Model, 'findById').resolves(motoInput);
 
-  //   const service = new ServiceMoto();
-  //   const result = await service.getOne('6348513f34c397abcad040b2');
+    const service = new ServiceMoto();
+    const result = await service.getOne('6348513f34c397abcad040b2');
 
-  //   expect(result).to.be.deep.equal(motoOutPut);
-  // });
+    expect(result).to.be.deep.equal(motoOutPut);
+  });
 
   it('Retornar [Motorcycle not found] caso a moto não exista', async function () {
     sinon.stub(Model, 'findById').resolves(undefined);

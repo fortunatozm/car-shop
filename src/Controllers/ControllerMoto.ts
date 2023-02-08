@@ -38,7 +38,6 @@ export default class ControllerMoto {
   public async getAll() {
     try {
       const motors = await this.service.getAll();
-      console.log('motors', motors);
       return this._res.status(200).json(motors);
     } catch (error) {
       this._next(error);
