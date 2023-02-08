@@ -93,6 +93,26 @@ describe('Testes da camada service [Motorcycle]', function () {
   //   expect(result).to.be.deep.equal(motoOutPut);
   // });
 
+  it('Retornar [Motorcycle not found] caso a moto não exista', async function () {
+    sinon.stub(Model, 'findById').resolves(undefined);
+    try {
+      const service = new ServiceMoto();
+      await service.getOne('63ddaebd40794723cfd7d257');
+    } catch (error) {
+      expect((error as Error).message).to.be.equal('Motorcycle not found');
+    }
+  });
+
+  it('Retornar [Invalid mongo id] caso o id seja invalido', async function () {
+    sinon.stub(Model, 'findById').resolves(undefined);
+    try {
+      const service = new ServiceMoto();
+      await service.getOne('22222222222222222');
+    } catch (error) {
+      expect((error as Error).message).to.be.equal('Invalid mongo id');
+    }
+  });
+
   // afterEach(function () {
   //   sinon.restore();
   // });

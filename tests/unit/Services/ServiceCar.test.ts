@@ -70,7 +70,7 @@ describe('Testes da camada service [car]', function () {
   });
 
   // it('Listar um carro específico com sucesso', async function () {
-  //   const output: ICar = {
+  //   const outputOne: ICar = {
   //     id: '6348513f34c397abcad040b2',
   //     model: 'Marea',
   //     year: 2002,
@@ -81,13 +81,33 @@ describe('Testes da camada service [car]', function () {
   //     seatsQty: 5,
   //   };
 
-  //   sinon.stub(Model, 'findById').resolves(output);
+  //   sinon.stub(Model, 'findById').resolves(outputOne);
   
   //   const service = new ServiceCar();
-  //   const result = await service.getOne('6348513f34c397abcad040b2');
+  //   const resultById = await service.getOne('6348513f34c397abcad040b2');
   
-  //   expect(result).to.be.deep.equal(output);
+  //   expect(resultById).to.be.deep.equal(outputOne);
   // });
+
+  it('Retornar [Motorcycle not found] caso a moto não exista', async function () {
+    sinon.stub(Model, 'findById').resolves(undefined);
+    try {
+      const service = new ServiceCar();
+      await service.getOne('63ddaebd40794723cfd7d257');
+    } catch (error) {
+      expect((error as Error).message).to.be.equal('Motorcycle not found');
+    }
+  });
+
+  it('Retornar [Invalid mongo id] caso o id seja invalido', async function () {
+    sinon.stub(Model, 'findById').resolves(undefined);
+    try {
+      const service = new ServiceCar();
+      await service.getOne('22222222222222222');
+    } catch (error) {
+      expect((error as Error).message).to.be.equal('Invalid mongo id');
+    }
+  });
   
   afterEach(function () {
     sinon.restore();
